@@ -23,7 +23,7 @@ VOID LOG(_In_z_ PCSTR restrict text, ...)
     va_end(args);
     
     while (!g_fWndProcWorkerSetupDone);
-    SendMessageA(WindowMenus.Output, EM_REPLACESEL, FALSE, (LPARAM)"[LOG:] ");
+    SendMessageA(WindowMenus.Output, EM_REPLACESEL, FALSE, (LPARAM)"[LOG]: ");
     SendMessageA(WindowMenus.Output, EM_REPLACESEL, FALSE, (LPARAM)buf);
     SendMessageA(WindowMenus.Output, EM_REPLACESEL, FALSE, (LPARAM)"\r\n");
 }
