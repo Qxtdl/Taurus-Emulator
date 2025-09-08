@@ -25,9 +25,14 @@ static uint32_t fetch_instruction()
         cpu.memory[cpu.pc + 3] << 24;
 }
 
+inline static void set_pc_imm(uint16_t value)
+{
+    cpu.pc = value & 0xFFFFFFFC;
+}
+
 inline static void set_pc(uint16_t value)
 {
-    cpu.pc = (value + cpu.pc) - 4 & 0xFFFFFFFC; // ensure pc is never misaligned
+    cpu.pc = (value + cpu.pc) - 4 & 0xFFFFFFFC;
 }
 
 static void add_inst(uint8_t rd, uint32_t rs1, uint32_t s2)
@@ -286,7 +291,7 @@ void ProcessPendingCmd()
         );
     if (strncmp(Cmd.cmd, "setpc ", 6) == 0)
     {
-        cpu.pc = strtol(Cmd.cmd + 6, NULL, 16);
+        set_pc_imm(strtol(Cmd.cmd + 6, NULL, 16));
         LOG("CPU PC = %X", cpu.pc);
     }
     if (strncmp(Cmd.cmd, "memdump ", 8) == 0)
