@@ -1,0 +1,21 @@
+#include <Windows.h>
+#include "resource.h"
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+IDI_ICON1               ICON                    "risc_v_icon_132051.ico"
+//IDI_WAVE1               WAVE                    	"music.wav"
